@@ -1,23 +1,26 @@
 package com.book.restapi.learnbookrestapi.controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.book.restapi.learnbookrestapi.entities.Book;
+import com.book.restapi.learnbookrestapi.services.BookService;
 
 @RestController
 public class BookController {
-
-    //user send data url(value) and get method (get) 
-    // @RequestMapping(value ="/hello", method = RequestMethod.GET)
+    @Autowired
+    private BookService bookService;
 
     @GetMapping("/book")
-    public Book getBook() {
-        Book book = new Book();
-        book.setId(1);
-        book.setName("java");
-        book.setAuther("gemse goslin");
-
-        return book;
+    public List<Book> getBooks() {
+     return this.bookService.getAllBooks();
+    }
+    @GetMapping("/book/{id}")
+    public Book getBookById(@PathVariable int id){
+        return this.bookService.getBookById(id);
     }
 }

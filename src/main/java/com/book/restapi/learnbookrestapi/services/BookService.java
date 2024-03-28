@@ -3,8 +3,11 @@ package com.book.restapi.learnbookrestapi.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
+
 import com.book.restapi.learnbookrestapi.entities.Book;
 
+@Controller
 public class BookService {
     
     private static List<Book> list = new ArrayList<>();
