@@ -14,4 +14,17 @@ public class BookService {
         list.add(new Book(2,"javaScript Book","xyz"));
         list.add(new Book(3,"python Book","abc"));
     }
+
+    //get all books
+
+    public List<Book> getAllBooks(){
+        return list;
+    }
+
+    //get single book by id
+    public Book getBookById(int id){
+        Book book= null;
+        book = list.stream().filter(e ->e.getId() == id).findFirst().get();
+        return book;
+    }
 }
