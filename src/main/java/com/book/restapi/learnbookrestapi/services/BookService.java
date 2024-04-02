@@ -2,6 +2,7 @@ package com.book.restapi.learnbookrestapi.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 
@@ -36,4 +37,9 @@ public class BookService {
         list.add(book);
         return book;
     }
+    //delete book by id
+    public void bookDelete(int bid){
+       list =  list.stream().filter(book -> book.getId() !=bid).collect(Collectors.toList());
+    }
+    
 }
